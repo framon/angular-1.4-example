@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc1/angular-material.min.css">
+<link rel="stylesheet" href="app/app.css">
+</head>
+ 
+<body ng-cloak layout="column"  ng-app= "webApp">
+
+
+	<md-toolbar layout="row">
+		<md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
+			<md-icon>menu</md-icon>
+		</md-button>
+		<h1>Angular Example</h1>
+	</md-toolbar>
+    
+	<div flex layout="row">
+
+		<md-sidenav  ng-click="ul.toggleList()" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left" class="md-whiteframe-z2" >
+			<md-list>
+				<md-list-item ng-repeat="it in ul.users">
+					<md-button ng-click="ul.selectUser(it)" ng-class="{'selected' : it === ul.selected }">
+						<md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
+						{{it.name}}
+					</md-button>
+				</md-list-item>
+			</md-list>
+		</md-sidenav>
+
+        <md-content flex id="content">
+			<div ng-view></div>
+          <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
+          <h2>{{ul.selected.name}}</h2>
+          <p>{{ul.selected.content}}</p>
+
+          <md-button class="share" md-no-ink ng-click="ul.makeContact(ul.selected)" aria-label="Share with {{ ul.selected.name }}">
+            <md-icon md-svg-icon="share"></md-icon>
+          </md-button>
+        </md-content>
+
+	</div>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.11/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.11/angular-route.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.11/angular-animate.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.11/angular-aria.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.11/angular-messages.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc1/angular-material.min.js"></script>
+  
+
+	<!-- Your application bootstrap  -->
+	<script type="text/javascript" src="app/app.js"></script>
+	<script type="text/javascript" src="app/controllers/country.js"></script>
+
+</body>
+</html>

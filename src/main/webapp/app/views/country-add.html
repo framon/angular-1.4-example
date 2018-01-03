@@ -1,0 +1,21 @@
+<md-content class="full-heigth">
+
+	<md-subheader class="md-no-sticky">Add Country</md-subheader>
+	<md-list>
+		<md-list-item ng-repeat="country in countries" class="md-3-line">
+			<div class="md-list-item-text">
+			  <h3>{{ country.geoCode }}</h3>
+			  <h4>{{ country.name }}</h4>
+			  <md-icon ng-click="edit($event)" aria-label="Update" class="md-secondary md-hue-3">mode_edit</md-icon>
+			  <md-icon ng-click="delete($event)" aria-label="Delete" class="md-secondary">delete</md-icon>
+			</div>
+			<md-divider ng-repeat-end></md-divider>
+		</md-list-item>
+	</md-list>
+
+	
+</md-content>
+
+<md-button class="md-fab md-fab-bottom-right " aria-label="FAB">
+  <md-icon>add</md-icon>
+</md-button>	
